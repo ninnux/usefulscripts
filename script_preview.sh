@@ -1,0 +1,6 @@
+SOURCE_FILE=$1
+DEST_SIZE=720
+#DESTINATION_FILE=$(echo $SOURCE_FILE | sed 's/\./_'$DEST_SIZE'./g')
+DESTINATION_FILE=$(echo $SOURCE_FILE | sed 's/\(.*\)\.\(.*\)/\1_'$DEST_SIZE'.\2/')
+echo $SOURCE_FILE" ==> "$DESTINATION_FILE
+ffmpeg -i $SOURCE_FILE -vf scale=-2:$DEST_SIZE $DESTINATION_FILE 
